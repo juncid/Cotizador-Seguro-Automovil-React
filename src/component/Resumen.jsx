@@ -1,0 +1,34 @@
+import  React from 'react';
+import {primeraMayuscula} from "../helper";
+import Resultado from "./Resultado";
+
+export default class Resumen extends React.Component{
+    mostrarResumen = () =>{
+        const {marca, year, plan} = this.props.datos;
+
+        if(!marca || !year || !plan) return null;
+
+        return (
+            <div className="resumen">
+                <h2>Resumen de Cotización</h2>
+                <li>Marca: {primeraMayuscula(marca)}</li>
+                <li>Plan: {primeraMayuscula(plan)}</li>
+                <li>Año del Auto: {year}</li>
+            </div>
+
+        )
+    };
+
+    render() {
+
+        return(
+            <div>
+                {this.mostrarResumen()}
+                <Resultado
+                    resultado = {this.props.resultado}
+                />
+            </div>
+        )
+    }
+}
+
